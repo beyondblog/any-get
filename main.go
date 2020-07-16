@@ -89,7 +89,9 @@ func main() {
 
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "")
+		message := fmt.Sprintf("欢迎使用 any-get!\n"+
+			"使用以下命令,上传文件 curl -F test=@$(pwd)/file1 -F test=@$(pwd)/file2 %s ", baseUrl)
+		c.String(http.StatusOK, message)
 	})
 
 	r.Static("/download", tempDir)
